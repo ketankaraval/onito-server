@@ -7,7 +7,7 @@ const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const body_parser_1 = __importDefault(require("body-parser"));
-const itemController_1 = require("./controller/itemController");
+const user_controller_1 = require("./controller/user.controller");
 const port = process.env.PORT || 5000;
 dotenv_1.default.config();
 mongoose_1.default.Promise = global.Promise;
@@ -24,17 +24,11 @@ app.all("/*", (_req, res, next) => {
     res.header("Access-Control-Allow-Methods", "*");
     next();
 });
-app.post("/add-category", (req, res) => {
-    (0, itemController_1.addCategory)(req, res);
+app.post("/add-user", (req, res) => {
+    (0, user_controller_1.addUser)(req, res);
 });
-app.get("/categories", (req, res) => {
-    (0, itemController_1.getCategories)(req, res);
-});
-app.post("/add-item", (req, res) => {
-    (0, itemController_1.addItem)(req, res);
-});
-app.get("/items/:categoryId", (req, res) => {
-    (0, itemController_1.getItems)(req, res);
+app.get("/fetch-users", (req, res) => {
+    (0, user_controller_1.getUsers)(req, res);
 });
 app.use("/", (_req, res) => res.send("404 not found"));
 app.listen(port, () => {
