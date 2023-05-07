@@ -3,11 +3,11 @@ import { userModel } from "../model/user.model";
 
 export const addUser = (req: Request, res: Response) => {
   const newUser = new userModel(req.body);
-  newUser.save((err: any, _category: { name: string }) => {
+  newUser.save((err: any, _user: any) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      res.status(201).send("category added");
+      res.status(201).send("user added");
     }
   });
 };
