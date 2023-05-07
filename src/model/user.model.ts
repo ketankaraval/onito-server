@@ -3,8 +3,9 @@ import { model, Schema } from "mongoose";
 const userSchema = new Schema({
   name: String,
   age: Number,
-  gender: String,
+  sex: String,
   mobileNo: Number,
+  govtIssuedIdType: String,
   govtIssuedId: String,
   guardianDetails: String,
   email: String,
